@@ -1,3 +1,7 @@
+"""
+Main file that combines all the three defense mechanisms, i.e., adversarial training, watermarking and differential privacy 
+to devise an unified strategy
+"""
 import time
 import os
 import torch

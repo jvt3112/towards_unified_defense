@@ -1,3 +1,7 @@
+"""
+Code for Black-box stealing attack. Some bits of code compiled from multiple repositories.
+"""
+
 import copy
 import torch
 import numpy as np

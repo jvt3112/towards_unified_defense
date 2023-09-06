@@ -35,7 +35,6 @@ class FLServer(object):
         # defining global models
         if args.dataset == 'mnist':
             self.global_model = MNIST_CNN(args=self.args)
-            # self.global_model = resnet18(10)
         elif args.dataset == 'fmnist':
             self.global_model = MNIST_CNN(args=self.args)
         elif args.dataset == 'cifar':

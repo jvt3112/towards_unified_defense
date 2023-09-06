@@ -1,3 +1,6 @@
+"""
+Code for Grey-box stealing attack. Code modified from modelSteal.py (black box attack) to incorporate the grey box setting
+"""
 import copy
 import torch
 import numpy as np
@@ -164,31 +167,6 @@ def train(model_b, train_data_b, epochs=10):
       testAccu = evaluate(model_b, test_data_b)
       waterAccur = evaluate_water(model_b, water_data_b)
   return model_b
-
-# Function to query the target model
-def query_model(x):
-    x_tensor = torch.tensor(x, dtype=torch.float32)
-    outputs = target_model(x_tensor.unsqueeze(0))
-    probabilities = torch.softmax(outputs, dim=1)
-    return probabilities.detach().numpy()[0]
-
-# Function to perform decision-based adversarial attack
-def decision_based_attack(x, num_queries, epsilon):
-    x_adv = np.copy(x.cpu())
-    for _ in range(num_queries):
-        perturbation = np.random.uniform(low=-epsilon, high=epsilon, size=x_adv.shape)
-        x_perturbed = x_adv + perturbation
-
-        prob_original = query_model(x_adv)
-        prob_perturbed = query_model(x_perturbed)
-
-        original_class = np.argmax(prob_original)
-        perturbed_class = np.argmax(prob_perturbed)
-
-        if perturbed_class != original_class:
-            x_adv = x_perturbed
-
-    return x_adv, perturbed_class
 
 def oracle(model, data, device):
 
