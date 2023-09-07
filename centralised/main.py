@@ -334,7 +334,6 @@ def args_parser():
     # Watermarking arguments
     parser.add_argument('--wm', type=int, default=0, help='whether to use watermarking')
     parser.add_argument('--save', type=int, default=0, help='saving a model or not')
-    parser.add_argument('--num', type=int, default=1, help='neighbouring')
 
     parser.add_argument('--mem', type=int, default=0, help='memebrship')
     args = parser.parse_args()
